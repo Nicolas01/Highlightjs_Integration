@@ -1,0 +1,53 @@
+{
+    "name": "highlight.js integration",
+    "version": "1.0",
+    "author": "Nicolas LLOBERA",
+    "license-name": "GPL-3.0",
+    "description": "Allows to use the client-side syntax highlighter highlight.js in MediaWiki",
+    "type": "other",
+    "require": {
+		"MediaWiki": ">= 1.27"
+	},
+    "Hooks": {
+        "ParserFirstCallInit": [
+            "HighlightjsIntegration::onParserFirstCallInit"
+        ],
+        "BeforePageDisplay": [
+            "HighlightjsIntegration::onBeforePageDisplay"
+        ]
+    },
+    "AutoloadClasses": {
+        "HighlightjsIntegration": "HighlightjsIntegration.class.php"
+    },
+    "ResourceModules": {
+        "ext.HighlightjsIntegration": {
+            "scripts": [
+                "highlight/highlight.pack.js",
+                "init.js"
+            ],
+            "styles": [
+                "custom.css",
+                "highlight/styles/railscasts.css"
+            ],
+            "targets": [ "desktop", "mobile" ]
+        }
+    },
+    "ResourceFileModulePaths": {
+        "localBasePath": ""
+    },
+    "config": {
+        "HighlightTags": [
+            "syntaxhighlight",
+            "source"
+        ],
+        "LangMapping": {
+            "tsql": "sql",
+            "mysql": "sql",
+            "vb": "vbscript",
+            "vba": "vbscript",
+            "xaml": "xml",
+            "mediawiki": "markdown"
+        }
+    },
+    "manifest_version": 1
+}
