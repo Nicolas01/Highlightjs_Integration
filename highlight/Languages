@@ -1,3 +1,4 @@
+Common: 21
 Apache
 Bash
 C#
@@ -18,7 +19,9 @@ Perl
 Python
 Ruby
 SQL
+Shell Session
 
+Other: 11
 Access log
 AutoHotkey
 DNS Zone file
