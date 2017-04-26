@@ -47,7 +47,8 @@
             "vb": "vbscript",
             "vba": "vbscript",
             "xaml": "xml",
-            "mediawiki": "markdown"
+            "mediawiki": "markdown",
+            "asp": "html"
         }
     },
     "manifest_version": 1
