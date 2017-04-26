@@ -6,8 +6,8 @@ for updated informations:
 
 == Requirements ==
 
-This version of the extension has been tested with highlight.js 0.9.8 and
-MediaWiki 1.27.1.
+This version of the extension has been tested with highlight.js 0.9.11 and
+MediaWiki 1.28.1.
 
 == Installation ==
 
@@ -15,14 +15,14 @@ Add this line to your LocalSettings.php:
 
     wfLoadExtension( 'Highlightjs_Integration' );
 
-By default, this extension will use a bundled copy of highlight.js 0.9.8 with 
-the following languages: 
-* Common: Apache, Bash, C#, C++, CSS, Diff, HTML/XML, HTTP, Ini, JSON, Java, 
-JavaScript, Makefile, Markdown, Nginx, PHP, Perl, Python, Ruby, SQL
-* Other: Access log, AutoHotkey, DNS Zone file, DOS .bat, Django, Excel, 
+By default, this extension will use a bundled copy of highlight.js 0.9.11 with
+the following languages:
+* Common: Apache, Bash, C#, C++, CSS, Diff, HTML/XML, HTTP, Ini, JSON, Java,
+JavaScript, Makefile, Markdown, Nginx, PHP, Perl, Python, Ruby, SQL, Shell Session
+* Other: Access log, AutoHotkey, DNS Zone file, DOS .bat, Django, Excel,
 Less, PowerShell, TeX, VBScript, YAML
-If you would like to use a different copy of the library, you can download it 
-on the highlight.js website and replace the 
+If you would like to use a different copy of the library, you can download it
+on the highlight.js website and replace the
 'extensions/MediaWiki/HighlightJS/highlight' folder.
 
 == Usage ==
@@ -36,5 +36,5 @@ On the wiki page, you can now use "syntaxhighlight" or "source" elements:
 
 == Parameters ==
 
-* lang;		Defines the language.
+* lang;     Defines the language.
 * inline;   The source code should be inline as part of a paragraph.
