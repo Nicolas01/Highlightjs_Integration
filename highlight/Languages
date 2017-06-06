@@ -1,9 +1,10 @@
-Common: 21
+Common: 23
 Apache
 Bash
 C#
 C++
 CSS
+CoffeeScript
 Diff
 HTML, XML
 HTTP
@@ -14,22 +15,10 @@ JavaScript
 Makefile
 Markdown
 Nginx
+Objective-C
 PHP
 Perl
 Python
 Ruby
 SQL
 Shell Session
-
-Other: 11
-Access log
-AutoHotkey
-DNS Zone file
-DOS .bat
-Django
-Excel
-Less
-PowerShell
-TeX
-VBScript
-YAML
