@@ -6,8 +6,8 @@ for updated informations:
 
 == Requirements ==
 
-This version of the extension has been tested with highlight.js 9.12 and
-MediaWiki 1.28.2.
+This version of the extension has been tested with highlight.js 11.5.1 and
+MediaWiki 1.35.6.
 
 == Installation ==
 
@@ -15,17 +15,22 @@ Add this line to your LocalSettings.php:
 
     wfLoadExtension( 'Highlightjs_Integration' );
 
-By default, this extension will use a bundled copy of highlight.js 9.12 with
-the following common languages:
-* Apache, Bash, C#, C++, CSS, CoffeeScript, Diff, HTML-XML, HTTP, Ini, JSON, Java,
-JavaScript, Makefile, Markdown, Nginx, Objective-C, PHP, Perl, Python, Ruby, SQL, Shell Session
+This extension will use a bundled copy of highlight.js 11.5.1 with the common 
+languages.
 If you would like to use a different copy of the library, you can download it
 on the highlight.js website and replace the
 'extensions/MediaWiki/HighlightJS/highlight' folder.
 
+=== Bug Uncaught SyntaxError: unterminated regular expression literal ===
+
+The load of the highlight.min.js script in this extension raises a syntax 
+error.
+As a workaround, the highlight.min.js script is loaded from the CDNJS url 
+instead of the file provided with this extension.
+
 == Usage ==
 
-On the wiki page, you can now use "syntaxhighlight" or "source" elements:
+On the wiki page, you can use "syntaxhighlight" or "source" elements:
 
 <syntaxhighlight>
 <?php
@@ -36,3 +41,10 @@ On the wiki page, you can now use "syntaxhighlight" or "source" elements:
 
 * lang;     Defines the language.
 * inline;   The source code should be inline as part of a paragraph.
+
+<syntaxhighlight lang="php">
+<?php
+// some php code
+</syntaxhighlight>
+
+<syntaxhighlight lang="cs" inline>var c = new Class();</syntaxhighlight>
