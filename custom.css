@@ -1,12 +1,10 @@
-/* no .hljs because it has to work even if the lang doesn't exist */
-pre.code2highlight,
-pre.nohighlight {
+pre.code2highlight {
     /* override: pre, .mw-code { padding: 1em;  */
     /* same as: .hljs { padding: 0.5em; */
     padding: 0.5em;
 }
 
-code.code2highlight.hljs {
+code.code2highlight {
     /* override: .hljs { padding: 0.5em; */
     /* same as: code { padding: 1px 4px; */
     padding: 1px 4px;

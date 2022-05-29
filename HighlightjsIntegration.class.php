@@ -13,10 +13,10 @@ class HighlightjsIntegration {
         foreach ($wgHighlightTags as $tag) {
             // $parser->setHook( tag, array( class, method ) );
             $parser->setHook($tag, array('HighlightjsIntegration', 'renderSyntaxhighlight'));
-		    }
+		}
 
-		    return true;
-	  }
+		return true;
+    }
 
     public static function renderSyntaxhighlight($in, $param = array(), $parser = null, $frame = false) {
         global $wgLangMapping;
@@ -25,27 +25,20 @@ class HighlightjsIntegration {
         //<syntaxhighlight lang="bash">
         //</syntaxhighlight>
         $lang = isset($param['lang']) ? $param['lang'] : '';
-
-        $highlightClass = 'code2highlight';
-        if ($lang == 'nohighlight')
-        {
-            $highlightClass = 'nohighlight';
-            $lang = '';
-        }
-
         // map lang if necessary
         if (array_key_exists($lang, $wgLangMapping)) {
             $lang = $wgLangMapping[$lang];
         }
 
         // class
+        $highlightClass = 'code2highlight';
         $htmlAttribs['class'] = isset($param['class']) ? $param['class'] . ' ' . $highlightClass : $highlightClass;
         if (!empty($lang)) {
             $htmlAttribs['class'] .= " lang-$lang";
         }
+
         // id
-        if (isset( $param['id']))
-        {
+        if (isset($param['id'])) {
             $htmlAttribs['id'] = $param['id'];
         }
 

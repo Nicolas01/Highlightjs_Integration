@@ -1,13 +1,13 @@
 {
     "name": "highlight.js integration",
-    "version": "1.2",
+    "version": "2.0",
     "author": "[https://www.mediawiki.org/wiki/User:NikusPokus Nikus Pokus]",
     "url": "https://www.mediawiki.org/wiki/Extension:Highlightjs_Integration",
     "license-name": "AGPL-3.0",
     "description": "Allows to use the client-side syntax highlighter [https://highlightjs.org highlight.js] in MediaWiki",
     "type": "other",
     "require": {
-		"MediaWiki": ">= 1.28"
+		"MediaWiki": ">= 1.35"
 	},
     "Hooks": {
         "ParserFirstCallInit": [
@@ -23,12 +23,11 @@
     "ResourceModules": {
         "ext.HighlightjsIntegration": {
             "scripts": [
-                "highlight/highlight.pack.js",
                 "init.js"
             ],
             "styles": [
                 "custom.css",
-                "highlight/styles/vs2015.css"
+                "highlight/styles/vs2015.min.css"
             ],
             "targets": [ "desktop", "mobile" ]
         }
