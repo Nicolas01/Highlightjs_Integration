@@ -64,7 +64,7 @@ class HighlightjsIntegration
             $htmlAttribs['dir'] = 'ltr';
         }
 
-        $out = htmlspecialchars(trim($out));
+        $out = htmlspecialchars($out);
 
         // inline ?
         //<syntaxhighlight lang="bash" inline></syntaxhighlight>
