@@ -50,10 +50,12 @@ $(document).ready(function () {
                                 hljs.highlightElement(element);
                                 // Add line numbers if specified
                                 if (element.hasAttribute('line')) {
+                                    element.removeAttribute('line');
                                     var start = 1;
                                     // Get the start line number if specified
                                     if (element.hasAttribute('start')) {
                                         start = parseInt($(element).attr('start'));
+                                        element.removeAttribute('start');
                                     }
                                     hljs.lineNumbersBlock(element, {
                                         startFrom: start
@@ -62,6 +64,7 @@ $(document).ready(function () {
                                 // Highlight lines if specified
                                 if (element.hasAttribute('highlight')) {
                                     var highlightArr = $(element).attr('highlight').split(/,\s*/);
+                                    element.removeAttribute('highlight');
                                     // Only calculate the highlight color once
                                     if (!highlightColor) {
                                         highlightColor = getHighlightColor(element);
