@@ -21,7 +21,7 @@ $(document).ready(function () {
                         .done(function (script, textStatus) {
                             var highlightColor = null;
                             var getHighlightColor = function (element) {
-                                // Get the default backgroud color 
+                                // Get the default background color 
                                 color = window.getComputedStyle(element, null).getPropertyValue('background-color');
                                 var rgb = color.substring(color.indexOf('(') + 1, color.lastIndexOf(')')).split(/,\s*/).map(Number);
                                 // Calculate luminance using CCIR 601
