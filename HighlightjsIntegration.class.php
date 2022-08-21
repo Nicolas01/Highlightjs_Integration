@@ -29,45 +29,50 @@ class HighlightjsIntegration
         global $wgLangMapping;
 
         // get the language
-        //<syntaxhighlight lang="bash">
-        //</syntaxhighlight>
-        $lang = isset($param['lang']) ? $param['lang'] : '';
+        // <syntaxhighlight lang="bash">...</syntaxhighlight>
+        $lang = $param['lang'];
+
         // map lang if necessary
         if (array_key_exists($lang, $wgLangMapping))
         {
             $lang = $wgLangMapping[$lang];
         }
 
+        // Set allowed HTML attributes
+        $htmlAttributes = Sanitizer::validateAttributes( $param, [ 'class', 'id', 'style' ] );
+
         // class
-        $highlightClass = 'code2highlight';
-        $htmlAttribs['class'] = isset($param['class']) ? $param['class'] . ' ' . $highlightClass : $highlightClass;
-        if (!empty($lang))
+        $htmlAttributes['class'] .= ' code2highlight';
+        if ($lang)
         {
-            $htmlAttribs['class'] .= " lang-$lang";
+            $htmlAttributes['class'] .= " lang-$lang";
         }
 
-        // id
-        if (isset($param['id']))
+        // inline
+        //<syntaxhighlight lang="bash" inline>...</syntaxhighlight>
+        if (isset($param['inline']))
         {
-            $htmlAttribs['id'] = $param['id'];
-        }
-
-        $code = htmlspecialchars(trim($in));
-
-        // inline ?
-        //<syntaxhighlight lang="bash" inline></syntaxhighlight>
-        $inline = isset($param['inline']);
-
-        if ($inline)
-        {
-            $htmlAttribs['style'] = 'display: inline;';
-            $out = Html::rawElement('code', $htmlAttribs, $code);
-            return $out;
+            $htmlAttributes['style'] .= 'display:inline;';
+            $tag = 'code';
         }
         else
         {
-            $out = Html::rawElement('pre', $htmlAttribs, $code);
-            return $out;
+            $tag = 'pre';
         }
+
+        // Replace strip markers (For e.g. {{#tag:syntaxhighlight|<nowiki>...}})
+        $out = $parser->mStripState->unstripNoWiki( $in );
+        $out = htmlspecialchars( rtrim( $out ) );
+
+        // Use 'nowiki' strip marker to prevent list processing (also known as doBlockLevels())
+        $marker = $parser::MARKER_PREFIX
+            . '-highlightjsinner-'
+            . sprintf( '%08X', $parser->mMarkerIndex++ )
+            . $parser::MARKER_SUFFIX;
+        $parser->mStripState->addNoWiki( $marker, $out );
+        // However, leave the wrapping <pre/> outside to prevent <p/>-wrapping
+        $out = Html::openElement( $tag, $htmlAttributes ) . $marker . Html::closeElement( $tag );
+
+        return $out;
     }
 }
