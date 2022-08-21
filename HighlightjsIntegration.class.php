@@ -2,13 +2,13 @@
 
 class HighlightjsIntegration
 {
-    public static function onBeforePageDisplay(OutputPage & $out, Skin & $skin)
+    public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin)
     {
         $out->addModules('ext.HighlightjsIntegration');
         return true;
     }
 
-    public static function onParserFirstCallInit(Parser & $parser)
+    public static function onParserFirstCallInit(Parser &$parser)
     {
         global $wgHighlightTags;
 
@@ -24,7 +24,7 @@ class HighlightjsIntegration
         return true;
     }
 
-    public static function renderSyntaxhighlight($in, $param = array() , $parser = null, $frame = false)
+    public static function renderSyntaxhighlight($in, $param = array(), $parser = null, $frame = false)
     {
         global $wgLangMapping;
 
