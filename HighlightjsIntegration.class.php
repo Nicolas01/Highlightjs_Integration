@@ -1,24 +1,31 @@
 <?php
 
-class HighlightjsIntegration {
-
-    public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin) {
+class HighlightjsIntegration
+{
+    public static function onBeforePageDisplay(OutputPage & $out, Skin & $skin)
+    {
         $out->addModules('ext.HighlightjsIntegration');
         return true;
     }
 
-    public static function onParserFirstCallInit(Parser &$parser) {
+    public static function onParserFirstCallInit(Parser & $parser)
+    {
         global $wgHighlightTags;
 
-        foreach ($wgHighlightTags as $tag) {
+        foreach ($wgHighlightTags as $tag)
+        {
             // $parser->setHook( tag, array( class, method ) );
-            $parser->setHook($tag, array('HighlightjsIntegration', 'renderSyntaxhighlight'));
-		}
+            $parser->setHook($tag, array(
+                'HighlightjsIntegration',
+                'renderSyntaxhighlight'
+            ));
+        }
 
-		return true;
+        return true;
     }
 
-    public static function renderSyntaxhighlight($in, $param = array(), $parser = null, $frame = false) {
+    public static function renderSyntaxhighlight($in, $param = array() , $parser = null, $frame = false)
+    {
         global $wgLangMapping;
 
         // get the language
@@ -26,19 +33,22 @@ class HighlightjsIntegration {
         //</syntaxhighlight>
         $lang = isset($param['lang']) ? $param['lang'] : '';
         // map lang if necessary
-        if (array_key_exists($lang, $wgLangMapping)) {
+        if (array_key_exists($lang, $wgLangMapping))
+        {
             $lang = $wgLangMapping[$lang];
         }
 
         // class
         $highlightClass = 'code2highlight';
         $htmlAttribs['class'] = isset($param['class']) ? $param['class'] . ' ' . $highlightClass : $highlightClass;
-        if (!empty($lang)) {
+        if (!empty($lang))
+        {
             $htmlAttribs['class'] .= " lang-$lang";
         }
 
         // id
-        if (isset($param['id'])) {
+        if (isset($param['id']))
+        {
             $htmlAttribs['id'] = $param['id'];
         }
 
@@ -48,15 +58,16 @@ class HighlightjsIntegration {
         //<syntaxhighlight lang="bash" inline></syntaxhighlight>
         $inline = isset($param['inline']);
 
-        if ($inline) {
+        if ($inline)
+        {
             $htmlAttribs['style'] = 'display: inline;';
             $out = Html::rawElement('code', $htmlAttribs, $code);
             return $out;
         }
-        else {
+        else
+        {
             $out = Html::rawElement('pre', $htmlAttribs, $code);
             return $out;
         }
     }
-
 }
