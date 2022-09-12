@@ -30,8 +30,7 @@
                 "init.js"
             ],
             "styles": [
-                "custom.css",
-                "highlight/styles/vs2015.min.css"
+                "custom.css"
             ],
             "targets": [
                 "desktop",
@@ -55,7 +54,8 @@
             "xaml": "xml",
             "mediawiki": "markdown",
             "asp": "html"
-        }
+        },
+        "HighlightJsIntegrationTheme": "vs2015"
     },
     "manifest_version": 1
 }

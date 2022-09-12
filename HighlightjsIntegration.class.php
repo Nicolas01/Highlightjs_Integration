@@ -4,7 +4,17 @@ class HighlightjsIntegration
 {
     public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin)
     {
+        global $wgHighlightJsIntegrationTheme, $wgExtensionAssetsPath;
+
+        $theme = $wgHighlightJsIntegrationTheme;
+        if ( ! is_string($wgHighlightJsIntegrationTheme) || strlen($wgHighlightJsIntegrationTheme) < 1) {
+            $theme = 'vs2015';
+        }
+
         $out->addModules('ext.HighlightjsIntegration');
+
+        $out->addStyle($wgExtensionAssetsPath . '/Highlightjs_Integration/highlight/styles/' . $theme . '.min.css');
+
         return true;
     }
 
