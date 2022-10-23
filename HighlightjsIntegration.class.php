@@ -61,7 +61,7 @@ class HighlightjsIntegration
         }
 
         // Replace strip markers (For e.g. {{#tag:syntaxhighlight|<nowiki>...}})
-        $out = $parser->mStripState->unstripNoWiki( $in );
+        $out = $parser->getStripState()->unstripNoWiki( $in );
         $out = htmlspecialchars( rtrim( $out ) );
 
         // Use 'nowiki' strip marker to prevent list processing (also known as doBlockLevels())
@@ -69,7 +69,7 @@ class HighlightjsIntegration
             . '-highlightjsinner-'
             . sprintf( '%08X', $parser->mMarkerIndex++ )
             . $parser::MARKER_SUFFIX;
-        $parser->mStripState->addNoWiki( $marker, $out );
+        $parser->getStripState()->addNoWiki( $marker, $out );
         // However, leave the wrapping <pre/> outside to prevent <p/>-wrapping
         $out = Html::openElement( $tag, $htmlAttributes ) . $marker . Html::closeElement( $tag );
 
