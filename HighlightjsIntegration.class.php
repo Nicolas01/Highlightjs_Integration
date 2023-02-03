@@ -42,7 +42,13 @@ class HighlightjsIntegration
         $htmlAttributes = Sanitizer::validateAttributes( $param, [ 'class', 'id', 'style' ] );
 
         // class
-        $htmlAttributes['class'] .= ' code2highlight';
+        if (array_key_exists('class', $htmlAttributes)) {
+            $htmlAttributes['class'] .= ' code2highlight';
+        }
+        else {
+            $htmlAttributes['class'] = 'code2highlight';
+        }
+
         if ($lang)
         {
             $htmlAttributes['class'] .= " lang-$lang";
