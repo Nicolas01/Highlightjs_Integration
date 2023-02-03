@@ -6,8 +6,8 @@ for updated informations:
 
 == Requirements ==
 
-This version of the extension has been tested with highlight.js 11.5.1 and
-MediaWiki 1.35.7.
+This version of the extension has been tested with highlight.js 11.7.0 and
+MediaWiki 1.39.1.
 
 == Installation ==
 
@@ -15,7 +15,7 @@ Add this line to your LocalSettings.php:
 
     wfLoadExtension( 'Highlightjs_Integration' );
 
-This extension will use a bundled copy of highlight.js 11.5.1 with the common 
+This extension will use a bundled copy of highlight.js 11.7.0 with the common 
 languages.
 If you would like to use a different copy of the library, you can download it
 on the highlight.js website and replace the

@@ -1,6 +1,6 @@
 {
     "name": "highlight.js integration",
-    "version": "2.1",
+    "version": "2.2",
     "author": [
         "[https://www.mediawiki.org/wiki/User:NikusPokus Nikus Pokus]",
         "[https://github.com/kuenzign Nathan Kuenzig]",
@@ -11,7 +11,7 @@
     "description": "Allows to use the client-side syntax highlighter [https://highlightjs.org highlight.js] in MediaWiki",
     "type": "other",
     "require": {
-        "MediaWiki": ">= 1.35"
+        "MediaWiki": ">= 1.39"
     },
     "Hooks": {
         "ParserFirstCallInit": [
