@@ -39,7 +39,11 @@ class HighlightjsIntegration
         }
 
         // Set allowed HTML attributes
-        $htmlAttributes = Sanitizer::validateAttributes( $param, [ 'class', 'id', 'style' ] );
+        $htmlAttributes = Sanitizer::validateAttributes( $param, [
+            'class' => 'class',
+            'id' => 'id',
+            'style' => 'style'
+        ] );
 
         // class
         if (array_key_exists('class', $htmlAttributes)) {
