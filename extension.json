@@ -27,6 +27,7 @@
     "ResourceModules": {
         "ext.HighlightjsIntegration": {
             "scripts": [
+                "highlight/highlight.min.js",
                 "init.js"
             ],
             "styles": [
