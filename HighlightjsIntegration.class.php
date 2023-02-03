@@ -15,10 +15,7 @@ class HighlightjsIntegration
         foreach ($wgHighlightTags as $tag)
         {
             // $parser->setHook( tag, array( class, method ) );
-            $parser->setHook($tag, array(
-                'HighlightjsIntegration',
-                'renderSyntaxhighlight'
-            ));
+            $parser->setHook( $tag, array( 'HighlightjsIntegration', 'renderSyntaxhighlight' ) );
         }
 
         return true;
