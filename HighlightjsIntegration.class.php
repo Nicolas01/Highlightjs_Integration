@@ -59,7 +59,12 @@ class HighlightjsIntegration
         //<syntaxhighlight lang="bash" inline>...</syntaxhighlight>
         if (isset($param['inline']))
         {
-            $htmlAttributes['style'] .= 'display:inline;';
+            if (array_key_exists('style', $htmlAttributes)) {
+                $htmlAttributes['style'] .= 'display:inline;';
+            }
+            else {
+                $htmlAttributes['style'] = 'display:inline;';
+            }
             $tag = 'code';
         }
         else
