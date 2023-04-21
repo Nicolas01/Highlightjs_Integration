@@ -27,12 +27,15 @@ class HighlightjsIntegration
 
         // get the language
         // <syntaxhighlight lang="bash">...</syntaxhighlight>
-        $lang = $param['lang'];
-
-        // map lang if necessary
-        if (array_key_exists($lang, $wgLangMapping))
+        if (array_key_exists('lang', $param))
         {
-            $lang = $wgLangMapping[$lang];
+            $lang = $param['lang'];
+
+            // map lang if necessary
+            if (array_key_exists($lang, $wgLangMapping))
+            {
+                $lang = $wgLangMapping[$lang];
+            }
         }
 
         // Set allowed HTML attributes
